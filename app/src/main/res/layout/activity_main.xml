@@ -8,6 +8,65 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="230sp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="300sp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/addition"
+            android:layout_width="85sp"
+            android:layout_height="85sp"
+            android:layout_marginStart="10sp"
+            android:text="@string/addition"
+            android:textSize="45sp"
+            app:cornerRadius="10sp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2sp" />
+
+        <Button
+            android:id="@+id/subtraction"
+            android:layout_width="85sp"
+            android:layout_height="85sp"
+            android:layout_marginStart="5sp"
+            android:text="@string/minus"
+            android:textSize="45sp"
+            app:cornerRadius="10sp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2sp" />
+
+        <Button
+            android:id="@+id/multiplication"
+            android:layout_width="85sp"
+            android:layout_height="85sp"
+            android:layout_marginStart="5sp"
+            android:text="@string/multiply"
+            android:textSize="45sp"
+            app:cornerRadius="10sp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2sp" />
+
+        <Button
+            android:id="@+id/division"
+            android:layout_width="85sp"
+            android:layout_height="85sp"
+            android:layout_marginStart="5sp"
+            android:text="@string/split"
+            android:textSize="45sp"
+            app:cornerRadius="10sp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2sp" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/sign"
         android:layout_width="60sp"
@@ -41,6 +100,7 @@
         android:layout_marginTop="60sp"
         android:ems="10"
         android:hint="@string/hint_number"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -56,6 +116,7 @@
         android:layout_marginTop="60sp"
         android:ems="10"
         android:hint="@string/hint_number"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -92,49 +153,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.888" />
-
-    <Button
-        android:id="@+id/addition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:layout_marginTop="250sp"
-        android:text="@string/addition"
-        android:textSize="45sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/subtraction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="112sp"
-        android:layout_marginTop="250sp"
-        android:text="@string/minus"
-        android:textSize="45sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/multiplication"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250sp"
-        android:layout_marginEnd="112sp"
-        android:text="@string/multiply"
-        android:textSize="45sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/division"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250sp"
-        android:layout_marginEnd="20sp"
-        android:text="@string/split"
-        android:textSize="45sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

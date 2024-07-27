@@ -1,13 +1,16 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -113,13 +116,13 @@ public class MainActivity extends AppCompatActivity {
                 if (!firstNumber.getText().toString().isEmpty()) {
                     num1 = Float.parseFloat(firstNumber.getText().toString());
                 } else {
-                    resultText.setText("Enter first number!");
+                    showPopup("Enter first number!");
                     return;
                 }
                 if (!secondNumber.getText().toString().isEmpty()) {
                     num2 = Float.parseFloat(secondNumber.getText().toString());
                 } else {
-                    resultText.setText("Enter second number!");
+                    showPopup("Enter second number!");
                     return;
                 }
                 String op = sign.getText().toString();
@@ -138,12 +141,44 @@ public class MainActivity extends AppCompatActivity {
                         result = String.valueOf(Operator.DIVISION.apply(num1, num2));
                         break;
                     default:
-                        result = "Enter operator!";
+                        showPopup("Enter operator!");
+                        result = "";
                 }
-
+                if (secondNumber.getText().toString().equals("0")&&op.equals("/")) {
+                    showAlert("Do you really want to divide by zero?");
+                } else {
                 resultText.setText(result);
+                }
             }
         });
 
+    }
+
+    private void showAlert(String text) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Are you seriously?!")
+                .setMessage(text)
+                .setCancelable(false)
+                .setNegativeButton("I'm crazy!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showPopup("O_O");
+                        resultText.setText("Infinity");
+                        dialog.cancel();
+                    }
+                })
+                .setPositiveButton("No-no-no!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        secondNumber.setText(firstNumber.getText());
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showPopup(String text) {
+        Toast.makeText(this,text,Toast.LENGTH_LONG).show();
     }
 }
