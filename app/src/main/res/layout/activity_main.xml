@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
         android:layout_marginTop="250sp"
-        android:text="@string/plus"
+        android:text="@string/addition"
         android:textSize="45sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
