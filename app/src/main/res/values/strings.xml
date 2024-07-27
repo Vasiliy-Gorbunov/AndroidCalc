@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="logo_text">Calculator</string>
+    <string name="hint_number">Enter number</string>
+    <string name="enter">GO!</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">*</string>
+    <string name="split">/</string>
+</resources>
