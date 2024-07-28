@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class PicActivity extends AppCompatActivity {
 
+    private MediaPlayer stukSound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +25,19 @@ public class PicActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        stukSound = MediaPlayer.create(this, R.raw.stuk);
     }
 
     public void goBack(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        playSound(stukSound);
         startActivity(intent);
+    }
+
+    private void playSound(MediaPlayer sound) {
+        if (sound.isPlaying()) {
+            sound.stop();
+        }
+        sound.start();
     }
 }

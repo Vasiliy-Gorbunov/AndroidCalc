@@ -2,11 +2,11 @@ package com.example.myapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,26 +22,30 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultText, sign;
     private EditText firstNumber, secondNumber;
     private Button addition, subtraction, multiplication, division, go;
+    private MediaPlayer dzinSound, stukSound, vzdohSound;
 
-    public enum Operator
-    {
+    public enum Operator {
         ADDITION("+") {
-            @Override public double apply(double x1, double x2) {
+            @Override
+            public double apply(double x1, double x2) {
                 return x1 + x2;
             }
         },
         SUBTRACTION("-") {
-            @Override public double apply(double x1, double x2) {
+            @Override
+            public double apply(double x1, double x2) {
                 return x1 - x2;
             }
         },
         MULTIPLICATION("*") {
-            @Override public double apply(double x1, double x2) {
+            @Override
+            public double apply(double x1, double x2) {
                 return x1 * x2;
             }
         },
         DIVISION("/") {
-            @Override public double apply(double x1, double x2) {
+            @Override
+            public double apply(double x1, double x2) {
                 return x1 / x2;
             }
         };
@@ -54,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         public abstract double apply(double x1, double x2);
 
-        @Override public String toString() {
+        @Override
+        public String toString() {
             return text;
         }
     }
@@ -79,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         multiplication = findViewById(R.id.multiplication);
         division = findViewById(R.id.division);
         go = findViewById(R.id.go);
+        dzinSound = MediaPlayer.create(this, R.raw.dzin);
+        stukSound = MediaPlayer.create(this, R.raw.stuk);
+        vzdohSound = MediaPlayer.create(this, R.raw.vzdoh);
 
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,10 +153,12 @@ public class MainActivity extends AppCompatActivity {
                         showPopup("Enter operator!");
                         result = "";
                 }
-                if (secondNumber.getText().toString().equals("0")&&op.equals("/")) {
+                if (secondNumber.getText().toString().equals("0") && op.equals("/")) {
+                    playSound(vzdohSound);
                     showAlert("Do you really want to divide by zero?");
                 } else {
-                resultText.setText(result);
+                    playSound(dzinSound);
+                    resultText.setText(result);
                 }
             }
         });
@@ -164,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         showPopup("O_O");
+                        playSound(dzinSound);
                         resultText.setText("Infinity");
                         dialog.cancel();
                     }
@@ -180,11 +191,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showPopup(String text) {
-        Toast.makeText(this,text,Toast.LENGTH_LONG).show();
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    }
+
+    private void playSound(MediaPlayer sound) {
+        if (sound.isPlaying()) {
+            sound.stop();
+        }
+        sound.start();
     }
 
     public void goToPicActivity(View view) {
         Intent intent = new Intent(this, PicActivity.class);
+        playSound(stukSound);
         startActivity(intent);
     }
 }
