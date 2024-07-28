@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -180,5 +181,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void showPopup(String text) {
         Toast.makeText(this,text,Toast.LENGTH_LONG).show();
+    }
+
+    public void goToPicActivity(View view) {
+        Intent intent = new Intent(this, PicActivity.class);
+        startActivity(intent);
     }
 }

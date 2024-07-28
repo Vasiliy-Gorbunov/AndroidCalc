@@ -7,4 +7,5 @@
     <string name="minus">-</string>
     <string name="multiply">*</string>
     <string name="split">/</string>
+    <string name="showPic">Show Pic</string>
 </resources>
