@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
     private void playSound(MediaPlayer sound) {
         if (sound.isPlaying()) {
             sound.stop();
+            sound.seekTo(0);
         }
         sound.start();
     }
