@@ -169,7 +169,7 @@
     <Button
         android:id="@+id/showPic"
         android:layout_width="115sp"
-        android:layout_height="40sp"
+        android:layout_height="48sp"
         android:onClick="goToPicActivity"
         android:text="@string/showPic"
         android:textSize="15sp"
